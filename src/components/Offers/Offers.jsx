@@ -1,20 +1,26 @@
 import React from 'react'
 import './Offers.css'
-import exclusive_image from '../Assets/exclusive_image.png'
+import exclusive_image from '../Assets/hero_image.png'
 
 const Offers = () => {
+  const handleCheckNowClick = () => {
+    const popularSection = document.getElementById('popular-section')
+    if (popularSection) {
+      popularSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className='offers'>
-    <div className="offers-left">
-     <h1>Exclusive</h1>
-     <h1>Offers For You</h1>
-     <p>On all the Trending Phones.</p>
-     <button>Check Now</button>
-    </div>
-    <div className="offers-right">
-    <img src={exclusive_image} alt="" />
-    </div>
-      
+      <div className="offers-left">
+        <h1>Exclusive</h1>
+        <h1>Offers For You</h1>
+        <p>On all the Trending Phones.</p>
+        <button onClick={handleCheckNowClick}>Check Now</button>
+      </div>
+      <div className="offers-right">
+        <img src={exclusive_image} alt="" />
+      </div>
     </div>
   )
 }

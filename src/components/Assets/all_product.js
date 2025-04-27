@@ -1,15 +1,16 @@
 import p1_img from "./product_1.png";
-import p2_img from "./product_2.png";
-import p3_img from "./product_3.png";
-import p4_img from "./product_4.png";
-import p5_img from "./product_5.png";
-import p6_img from "./product_6.png";
-import p7_img from "./product_7.png";
-import p8_img from "./product_8.png";
-import p9_img from "./product_9.png";
-import p10_img from "./product_10.png";
-import p11_img from "./product_11.png";
-import p12_img from "./product_12.png";
+import p2_img from "./images.png";
+import p3_img from "./2_3_f91c302a-4602-4ff1-867c-591a1fc26b38_800x.png";
+import p4_img from "./61BgEfmZC8L._AC_UF1000,1000_QL80_.png";
+import p5_img from "./-original-imah2nd6sbpfgn29.png";
+import p6_img from "./d9169f94917a9bb1de62d34fc43bb0ad.png";
+import p7_img from "./718aEzLJKLL.png";
+import p8_img from "./galaxy-a06-sm-a065flbdins-samsung-original-imah4az6d6xfjqqz.png";
+import p9_img from "./717swzZZk5L.png";
+import p10_img from "./in-galaxy-m-sm-m166plggins-front-light-green-thumb-545235495.png";
+import p11_img from "./in-galaxy-f-sm-e166pzkhins-sm-e---pzkdins-thumb-545373342.png";
+import p12_img from "./in-galaxy-f-sm-e066bzvhins-sm-e---bzvgins-545132358.png";
+
 import p13_img from "./product_13.png";
 import p14_img from "./product_14.png";
 import p15_img from "./product_15.png";
@@ -38,7 +39,7 @@ import p36_img from "./product_36.png";
 let all_product = [
   {
     id: 1,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung S25 Ultra",
     category: "women",
     image: p1_img,
     new_price: 50.0,
@@ -46,7 +47,7 @@ let all_product = [
   },
   {
     id: 2,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung S25 Plus",
     category: "women",
     image: p2_img,
     new_price: 85.0,
@@ -54,7 +55,7 @@ let all_product = [
   },
   {
     id: 3,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung S25",
     category: "women",
     image: p3_img,
     new_price: 60.0,
@@ -62,7 +63,7 @@ let all_product = [
   },
   {
     id: 4,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung Z fold 6",
     category: "women",
     image: p4_img,
     new_price: 100.0,
@@ -70,7 +71,7 @@ let all_product = [
   },
   {
     id: 5,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung Z flip 6",
     category: "women",
     image: p5_img,
     new_price: 85.0,
@@ -78,7 +79,7 @@ let all_product = [
   },
   {
     id: 6,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung A56",
     category: "women",
     image: p6_img,
     new_price: 85.0,
@@ -86,7 +87,7 @@ let all_product = [
   },
   {
     id: 7,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung A36",
     category: "women",
     image: p7_img,
     new_price: 85.0,
@@ -94,7 +95,7 @@ let all_product = [
   },
   {
     id: 8,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung A06",
     category: "women",
     image: p8_img,
     new_price: 85.0,
@@ -102,7 +103,7 @@ let all_product = [
   },
   {
     id: 9,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung M56",
     category: "women",
     image: p9_img,
     new_price: 85.0,
@@ -110,7 +111,7 @@ let all_product = [
   },
   {
     id: 10,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung M16",
     category: "women",
     image: p10_img,
     new_price: 85.0,
@@ -118,7 +119,7 @@ let all_product = [
   },
   {
     id: 11,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung F16",
     category: "women",
     image: p11_img,
     new_price: 85.0,
@@ -126,7 +127,7 @@ let all_product = [
   },
   {
     id: 12,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Samsung F06",
     category: "women",
     image: p12_img,
     new_price: 85.0,

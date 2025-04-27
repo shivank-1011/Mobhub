@@ -6,6 +6,7 @@ import {
   sendPasswordResetEmail,
   updateEmail as firebaseUpdateEmail,
   updatePassword as firebaseUpdatePassword,
+  updateProfile,
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup
@@ -62,6 +63,11 @@ export function AuthProvider({ children }) {
   // it's pretty simple actually
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
+  }
+
+  // This updates the user profile (name, photo URL, etc.)
+  function updateUserProfile(profileData) {
+    return updateProfile(auth.currentUser, profileData)
   }
 
   // this does google login, which is complicated
@@ -187,7 +193,8 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    updateUserProfile  // Add the new function to the context value
   }
 
   return (
