@@ -1,4 +1,4 @@
-import { signInWithGoogle, onAuthStateChanged } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../configs/firebase';
 
 import { createContext, useState, useEffect } from 'react';
@@ -11,7 +11,8 @@ export const GoogleAuthContextProvider = ({ children }) => {
 
   const signInWithGoogleHandler = async () => {
     try {
-      const userCredential = await signInWithGoogle(auth);
+      const provider = new GoogleAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
       setUser(userCredential.user);
       navigate('/home');
     } catch (error) {
