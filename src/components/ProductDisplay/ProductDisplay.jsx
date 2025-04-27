@@ -49,11 +49,10 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
           <div className="productdisplay-right-sizes">
-            <div>S</div>
-            <div>M</div>
-            <div>L</div>
-            <div>XL</div>
-            <div>XXL</div>
+            <div>128 GB</div>
+            <div>256 GB</div>
+            <div>512 GB</div>
+            <div>1 TB</div>
           </div>
         </div>
         {quantity === 0 ? (
