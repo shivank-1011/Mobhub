@@ -42,9 +42,7 @@ const ProductDisplay = (props) => {
           </div>
         </div>
         <div className="productdisplay-right-description">
-          A lightweight, usually knitted, pullover shirt, close-fitting and with
-          a round neckline and short sleeves, worn as an undershirt or outer
-          gorment.
+        Offers sleek designs, and AI-powered features for smarter navigation. With longer battery life, fast charging, and high-resolution cameras, they deliver enhanced performance, intuitive user interfaces, and professional-quality photos and videos for an optimal experience.
         </div>
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
@@ -69,7 +67,7 @@ const ProductDisplay = (props) => {
           </div>
         )}
         <p className="productdisplay-right-category">
-          <span>Category :</span>Women , T-Shirt , Crop Top
+          <span>Category :</span>Smartphones 
         </p>
         <p className="productdisplay-right-category">
           <span>Tags :</span>Modern , Latest

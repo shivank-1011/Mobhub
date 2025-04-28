@@ -30,8 +30,6 @@ const dropdown_toggle = (e)=>{
         <li onClick={()=>{setMenu("mens")}}><Link style={{textDecoration: 'none'}} to='/mens'>Apple</Link>{menu==="mens"?<hr/>:<></>} </li>
         <li onClick={()=>{setMenu("womens")}}><Link style={{textDecoration: 'none'}} to='/womens'>Samsung</Link>{menu==="womens"?<hr/>:<></>} </li>
         <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration: 'none'}} to='/kids'>Vivo</Link>{menu==="kids"?<hr/>:<></>} </li>
-        <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration: 'none'}} to='/kids'>Xiaomi</Link>{menu==="kids"?<hr/>:<></>} </li>
-        <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration: 'none'}} to='/kids'>Compare</Link>{menu==="kids"?<hr/>:<></>} </li>
       </ul>
       <div className="nav-login-cart">
       {localStorage.getItem('auth-token')

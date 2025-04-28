@@ -95,7 +95,12 @@
   }
   .social-icon-1 {
     transition-duration: 0.4s;
-    background-color: rgb(0, 0, 0);
+    background: linear-gradient(
+      225deg,
+      #3075ff 11.92%,
+      #264bec 51.56%,
+      #2527d2 85.69%
+    );
     transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
   }
   .social-icon-1 svg,
@@ -108,7 +113,7 @@
   }
   .social-icon-1-1 {
     transition-duration: 0.4s;
-    background-color: rgb(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
   }
   .socialcontainer:hover .social-icon-1 {
     transform: translateY(-70px);
@@ -123,7 +128,7 @@
     transition-duration: 0.4s;
     transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
     background: linear-gradient(
-      72.44deg,
+      245deg,
       #ff7a00 11.92%,
       #ff0169 51.56%,
       #d300c5 85.69%
@@ -135,7 +140,12 @@
   .social-icon-3 {
     transition-duration: 0.4s;
     transition-timing-function: cubic-bezier(0.46, -0.78, 0.5, 1.56);
-    background: #316ff6;
+    background: linear-gradient(
+      225deg,
+      #06fe02 11.92%,
+      #2fd709 51.56%,
+      #10d114 85.69%
+    );
   }
   
   .socialcontainer:hover .social-icon-3 {
