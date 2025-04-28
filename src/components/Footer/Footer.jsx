@@ -84,6 +84,7 @@ const Footer = () => {
 
         </div>
         <div class="socialcontainer">
+        <a href="https://wa.me/918827444557?text=Hi%2C%20I%27m%20interested%20in%20your%20project%20!" target="_blank" rel="noopener noreferrer">
           <div class="icon social-icon-3-3">
             <svg
               viewBox="0 0 448 512"
@@ -96,6 +97,8 @@ const Footer = () => {
               ></path>
             </svg>
           </div>
+          </a>
+          <a href="https://wa.me/918827444557?text=Hi%2C%20I%27m%20interested%20in%20your%20project%20!" target="_blank" rel="noopener noreferrer">
           <div class="social-icon-3">
             <svg
               viewBox="0 0 448 512"
@@ -108,6 +111,7 @@ const Footer = () => {
               ></path>
             </svg>
           </div>
+          </a>
         </div>
         <div class="socialcontainer">
           <a href="https://github.com/shivank-1011" target="_blank" rel="noopener noreferrer">
