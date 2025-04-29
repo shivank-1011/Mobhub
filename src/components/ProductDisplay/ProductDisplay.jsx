@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ProductDisplay.css";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
@@ -7,7 +7,27 @@ import { ShopContext } from "../../context/ShopContext";
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart, cartItems, removeFromCart } = useContext(ShopContext);
-  const quantity = cartItems[product.id] || 0;
+
+  const [selectedSize, setSelectedSize] = useState("128 GB");
+
+  const priceIncrements = {
+    "128 GB": 0,
+    "256 GB": 40,
+    "512 GB": 80,
+    "1 TB": 120,
+  };
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
+  const adjustedOldPrice = product.old_price + priceIncrements[selectedSize];
+  const adjustedNewPrice = product.new_price + priceIncrements[selectedSize];
+
+  // Calculate quantity for product and selected size
+  const quantity = cartItems.find(
+    (item) => item.itemId === product.id && item.size === selectedSize
+  )?.quantity || 0;
 
   return (
     <div className="productdisplay">
@@ -35,34 +55,45 @@ const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-old">
-            ${product.old_price}
+            ${adjustedOldPrice}
           </div>
           <div className="productdisplay-right-price-new">
-            ${product.new_price}
+            ${adjustedNewPrice}
           </div>
         </div>
         <div className="productdisplay-right-description">
-        Offers sleek designs, and AI-powered features for smarter navigation. With longer battery life, fast charging, and high-resolution cameras, they deliver enhanced performance, intuitive user interfaces, and professional-quality photos and videos for an optimal experience.
+          Offers sleek designs, and AI-powered features for smarter navigation. With longer battery life, fast charging, and high-resolution cameras, they deliver enhanced performance, intuitive user interfaces, and professional-quality photos and videos for an optimal experience.
         </div>
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
           <div className="productdisplay-right-sizes">
-            <div>128 GB</div>
-            <div>256 GB</div>
-            <div>512 GB</div>
-            <div>1 TB</div>
+            {Object.keys(priceIncrements).map((size) => (
+              <div
+                key={size}
+                onClick={() => handleSizeClick(size)}
+                style={{
+                  cursor: "pointer",
+                  fontWeight: selectedSize === size ? "bold" : "normal",
+                  border: selectedSize === size ? "2px solid black" : "none",
+                  padding: "5px",
+                  borderRadius: "5px",
+                }}
+              >
+                {size}
+              </div>
+            ))}
           </div>
         </div>
         {quantity === 0 ? (
-          <button onClick={() => addToCart(product.id)}>Add To Cart</button>
+          <button onClick={() => addToCart(product.id, selectedSize, priceIncrements[selectedSize])}>Add To Cart</button>
         ) : (
           <div className="quantity-counter" role="group" aria-label="Quantity counter">
             <span className="counter-btn minus-btn"
-              onClick={() => removeFromCart(product.id)}
+              onClick={() => removeFromCart(product.id, selectedSize)}
               aria-label="Decrease quantity">-</span>
             <span className="quantity-count" aria-live="polite" aria-atomic="true">{quantity}</span>
             <span className="counter-btn plus-btn"
-              onClick={() => addToCart(product.id)}
+              onClick={() => addToCart(product.id, selectedSize, priceIncrements[selectedSize])}
               aria-label="Increase quantity">+</span>
           </div>
         )}

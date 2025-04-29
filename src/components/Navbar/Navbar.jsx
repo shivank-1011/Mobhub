@@ -26,10 +26,10 @@ const dropdown_toggle = (e)=>{
       </div>
       <img className='nav-dropdown' onClick={dropdown_toggle} src={nav_dropdown} alt="" />
       <ul ref={menuRef} className="nav-menu">
-        <li onClick={()=>{setMenu("shop")}}><Link style={{textDecoration: 'none'}} to='/'>Home</Link>{menu==="shop"?<hr/>:<></>} </li>
-        <li onClick={()=>{setMenu("mens")}}><Link style={{textDecoration: 'none'}} to='/mens'>Apple</Link>{menu==="mens"?<hr/>:<></>} </li>
-        <li onClick={()=>{setMenu("womens")}}><Link style={{textDecoration: 'none'}} to='/womens'>Samsung</Link>{menu==="womens"?<hr/>:<></>} </li>
-        <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration: 'none'}} to='/kids'>Vivo</Link>{menu==="kids"?<hr/>:<></>} </li>
+        <li onClick={()=>{setMenu("shop")}}><Link style={{textDecoration: 'none',color:"black"}} to='/'>Home</Link>{menu==="shop"?<hr/>:<></>} </li>
+        <li onClick={()=>{setMenu("apple")}}><Link style={{textDecoration: 'none',color:"black"}} to='/apple'>Apple</Link>{menu==="apple"?<hr/>:<></>} </li>
+        <li onClick={()=>{setMenu("samsung")}}><Link style={{textDecoration: 'none',color:"black"}} to='/samsung'>Samsung</Link>{menu==="samsung"?<hr/>:<></>} </li>
+        <li onClick={()=>{setMenu("vivo")}}><Link style={{textDecoration: 'none',color:"black"}} to='/vivo'>Vivo</Link>{menu==="vivo"?<hr/>:<></>} </li>
       </ul>
       <div className="nav-login-cart">
       {localStorage.getItem('auth-token')

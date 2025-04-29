@@ -2,74 +2,90 @@ import React, { createContext, useState } from "react";
 import all_product from '../components/Assets/all_product'
 
 export const ShopContext = createContext(null)
-const getDefaultCart = ()=>{
-    let cart = {};
-    for (let index = 0; index < all_product.length+1; index++) {
-         cart[index] = 0;       
-    }
-    return cart;
+
+const getDefaultCart = () => {
+    return [];
 }
 
 const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart())
-     
-   const addToCart = (itemId) => {
-    setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
-    console.log(cartItems);
 
-//     if(localStorage.getItem('auth-token')){
-//         fetch('http://localhost:4000/addtocart',{
-//             method:'POST',
-//             headers:{
-//                 Accept:'application/form-data',
-//                 'auth-token':`${localStorage.getItem('auth-token')}`,
-//                 'Content-Type':'application/json',
-//             },
-//             body:({"itemId":itemId })
-//         })
-//         .then((response)=>response.json())
-//         .then((data)=>console.log(data))
-//     }
- }
-   const removeFromCart = (itemId) => {
-    setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
-   }
+    const addToCart = (itemId, size = "128 GB", priceIncrement = 0) => {
+        setCartItems((prev) => {
+            // Check if item with same id and size exists
+            const existingIndex = prev.findIndex(
+                (item) => item.itemId === itemId && item.size === size
+            );
+            const baseProduct = all_product.find(product => product.id === Number(itemId));
+            const basePrice = baseProduct ? baseProduct.new_price : 0;
+            if (existingIndex >= 0) {
+                // Increase quantity of existing item
+                const updatedCart = [...prev];
+                updatedCart[existingIndex].quantity += 1;
+                return updatedCart;
+            } else {
+                // Add new item with quantity 1
+                return [
+                    ...prev,
+                    {
+                        itemId,
+                        size,
+                        quantity: 1,
+                        adjustedPrice: basePrice + priceIncrement,
+                    },
+                ];
+            }
+        });
+    };
 
-const getTotalCartAmount = () => {
-    let totalAmount = 0
-    for (const item in cartItems){
-        if(cartItems[item]>0)
-        {
-            let itemInfo = all_product.find((product)=>product.id===Number(item))
-            totalAmount += itemInfo.new_price * cartItems[item]
+    const removeFromCart = (itemId, size = "128 GB") => {
+        setCartItems((prev) => {
+            const existingIndex = prev.findIndex(
+                (item) => item.itemId === itemId && item.size === size
+            );
+            if (existingIndex === -1) return prev;
+            const updatedCart = [...prev];
+            if (updatedCart[existingIndex].quantity === 1) {
+                // Remove item from cart
+                updatedCart.splice(existingIndex, 1);
+            } else {
+                // Decrease quantity
+                updatedCart[existingIndex].quantity -= 1;
+            }
+            return updatedCart;
+        });
+    };
+
+    const getTotalCartAmount = () => {
+        let totalAmount = 0;
+        for (const item of cartItems) {
+            totalAmount += item.adjustedPrice * item.quantity;
         }
-    }
-    return totalAmount;
+        return totalAmount;
+    };
 
-}
-
-const getTotalCartItems = () =>{
-    let totalItem = 0
-    for(const item in cartItems)
-    {
-        if(cartItems[item]>0)
-        {
-            totalItem += cartItems[item];
+    const getTotalCartItems = () => {
+        let totalItem = 0;
+        for (const item of cartItems) {
+            totalItem += item.quantity;
         }
-    }
-    return totalItem;
-}
+        return totalItem;
+    };
 
+    const contextValue = {
+        getTotalCartItems,
+        getTotalCartAmount,
+        all_product,
+        cartItems,
+        addToCart,
+        removeFromCart,
+    };
 
-     
-   const contextValue = {getTotalCartItems, getTotalCartAmount, all_product,cartItems,addToCart,removeFromCart}
-     
-return (
-    <ShopContext.Provider value={contextValue}>
-        {props.children}
-    </ShopContext.Provider>
-)
+    return (
+        <ShopContext.Provider value={contextValue}>
+            {props.children}
+        </ShopContext.Provider>
+    );
+};
 
-}
-
-export default ShopContextProvider
+export default ShopContextProvider;

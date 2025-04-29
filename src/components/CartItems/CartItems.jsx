@@ -1,10 +1,46 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../context/ShopContext'
 import remove_icon from '../Assets/cart_cross_icon.png'
+import { Link } from 'react-router-dom'
 
 const CartItems = () => {
-    const {getTotalCartAmount, all_product, cartItems, removeFromCart} = useContext(ShopContext)
+  const { getTotalCartAmount, cartItems, all_product, removeFromCart, addToCart } = useContext(ShopContext)
+
+  const priceIncrements = {
+    "128 GB": 0,
+    "256 GB": 40,
+    "512 GB": 80,
+    "1 TB": 120,
+  };
+
+  // New state for promo code, discount and error message
+  const [promoCode, setPromoCode] = useState('')
+  const [discount, setDiscount] = useState(0)
+  const [promoError, setPromoError] = useState('')
+
+  // Handler for promo code input change
+  const handlePromoCodeChange = (e) => {
+    setPromoCode(e.target.value)
+    setPromoError('') // Clear error on input change
+  }
+
+  // Handler for promo code submit
+  const handleApplyPromoCode = () => {
+    if (promoCode.trim().toUpperCase() === 'SHIVANK10') {
+      const subtotal = getTotalCartAmount()
+      const discountValue = subtotal * 0.10
+      setDiscount(discountValue)
+      setPromoError('')
+    } else {
+      setDiscount(0)
+      setPromoError('Apply SHIVANK10 to get 10% discount')
+    }
+  }
+
+  // Calculate total after discount
+  const subtotal = getTotalCartAmount()
+  const totalAfterDiscount = subtotal - discount
 
   return (
     <div className='cartitems'>
@@ -14,55 +50,69 @@ const CartItems = () => {
         <p>Price</p>
         <p>Quantity</p>
         <p>Total</p>
+        <p>Size</p>
         <p>Remove</p>
       </div>
       <hr />
-     {all_product.map((e)=>{
-        if(cartItems[e.id]>0)
-        {
-          return <div>
+      {cartItems.map((cartItem, index) => {
+        const product = all_product.find(p => p.id === Number(cartItem.itemId))
+        if (!product) return null
+        return (
+          <div key={index}>
             <div className="cartitems-format cartitems-format-main">
-            <img src={e.image} alt="" className='carticon-product-icon'/>
-            <p>{e.name}</p>
-            <p>${e.new_price}</p>
-            <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-            <p>${e.new_price*cartItems[e.id]}</p>
-            <img className='cartitems-remove-icon' src={remove_icon} onClick={()=>{removeFromCart(e.id)}} alt="" />
-        </div>
-        <hr />
-      </div>
-        }
-        return null
+              <img src={product.image} alt="" className='carticon-product-icon' />
+              <Link to={`/product/${product.id}`} className='cartitem-product-name' style={{ color: 'black', textDecoration: 'none' }}>
+                {product.name}
+              </Link>
+              <p>${cartItem.adjustedPrice}</p>
+              <div className='cartitems-quantity-control'>
+                <button className='quantity-btn minus-btn' onClick={() => removeFromCart(cartItem.itemId, cartItem.size)}>-</button>
+                <span className='cartitems-quantity'>{cartItem.quantity}</span>
+                <button className='quantity-btn plus-btn' onClick={() => addToCart(cartItem.itemId, cartItem.size, priceIncrements[cartItem.size])}>+</button>
+              </div>
+              <p>${cartItem.adjustedPrice * cartItem.quantity}</p>
+              <p>{cartItem.size}</p>
+              <img className='cartitems-remove-icon' src={remove_icon} onClick={() => { removeFromCart(cartItem.itemId, cartItem.size) }} alt="" />
+            </div>
+            <hr />
+          </div>
+        )
       })}
-     <div className="cartitems-down">
-      <div className="cartitems-total">
-        <h1>Cart Totals</h1>
-        <div>
-      <div className="cartitems-total-item">
-        <p>subtotal</p>
-        <p>${getTotalCartAmount()}</p>
-      </div>
-      <hr />
-      <div className="cartitems-total-item">
-        <p>Shipping Fee</p>
-        <p>Fee</p>
+      <div className="cartitems-down">
+        <div className="cartitems-total">
+          <h1>Cart Totals</h1>
+          <div>
+            <div className="cartitems-total-item">
+              <p>subtotal</p>
+              <p>${subtotal.toFixed(2)}</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <p>Discount</p>
+              <p className='discount_value'>${discount.toFixed(2)}</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <p>Shipping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cartitems-total-item">
+              <h3>Total</h3>
+              <h3>${totalAfterDiscount.toFixed(2)}</h3>
+            </div>
+          </div>
+          <button>Proceed To Checkout</button>
         </div>
-        <hr />
-        <div className="cartitems-total-item">
-          <h3>Total</h3>
-          <h3>${getTotalCartAmount()}</h3>
-      </div>
-      </div>
-     <button>Proceed To Checkout</button>
-     </div>
-     <div className='cartitems-promocode'>
-      <p>If you hava a promo code, Enter it here</p>
-      <div className="cartitems-promobox">
-        <input type="text" placeholder='promo code' />
-        <button>Submit</button>
+        <div className='cartitems-promocode'>
+          <p>If you have a promo code, Enter it here</p>
+          <div className="cartitems-promobox">
+            <input type="text" placeholder='promo code' value={promoCode} onChange={handlePromoCodeChange} />
+            <button onClick={handleApplyPromoCode}>Submit</button>
+          </div>
+          {promoError && <p style={{ color: 'red', marginTop: '5px' }}>{promoError}</p>}
         </div>
-     </div>
-    </div>
+      </div>
     </div>
   )
 }
