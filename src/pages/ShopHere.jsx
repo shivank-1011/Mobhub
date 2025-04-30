@@ -11,7 +11,7 @@ const ShopHere = () => {
     <div>
       <Hero />
       
-      <FadeInSection>
+      <FadeInSection id="popular-section">
         <Popular />
       </FadeInSection>
       

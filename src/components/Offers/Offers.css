@@ -126,9 +126,9 @@ justify-content: center;
 
 @media(max-width:500px){
     .offers{
-        margin-bottom: 70px;
-        height: 22vh;
-        margin-top: 119px;
+        margin-bottom: 50px;
+        height: 20vh;
+        margin-top: 0px;
     }
     .offers-left h1{
         font-size: 16px;

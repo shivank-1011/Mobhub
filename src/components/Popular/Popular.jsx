@@ -6,7 +6,7 @@ import FadeInSection from '../FadeInSection/FadeInSectio';
 
 const Popular = () => {
   return (
-    <div className="popular">
+    <div className="popular" id="popular-section">
       <FadeInSection>
         <h1>Trending Now</h1>
       </FadeInSection>

@@ -233,7 +233,7 @@
 
 @media(max-width:500px){
   .navbar{
-      padding: 8px 0px;
+      padding: 8px px;
       gap: 0;
   }
   .nav-logo{
@@ -245,5 +245,12 @@
   }
   .nav-login-cart{
       transform: scale(0.8);
+  }
+  .nav-cart-count {
+    margin-top: -30px;
+    margin-left: -45px;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
   }
 }

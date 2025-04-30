@@ -33,6 +33,61 @@ font-weight: 500;
   margin: 0px 40px;
   cursor: pointer;
 }
+/* Add this to your CartItems.css file */
+
+.empty-cart {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.empty-cart-container {
+  text-align: center;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  width: 90%;
+}
+
+.empty-cart-container svg {
+  margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+}
+
+.empty-cart-container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #171717;
+}
+
+.empty-cart-container p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.empty-cart-container button {
+  background-color: #ff4141;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.empty-cart-container button:hover {
+  background-color: #e03131;
+}
 
 .cartitems-quantity-control{
   display: flex;
@@ -238,41 +293,28 @@ transform: translate(0);
 }
 
 /* Add this media query at the end of your CartItems.css file */
-
+.cart-label-mobile {
+  display: none;
+  font-weight: bold;
+  margin-right: 5px;
+}
 @media (max-width: 800px) {
   .cartitems-format-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two column layout */
-    gap: 20px;
-    padding: 10px;
-    margin: 0 auto; /* This centers the grid horizontally */
-    max-width: 90%; /* Control the maximum width */
-    width: fit-content; /* Make the grid only as wide as its content */
-    justify-content: center; /* Center the grid items */
+    display: none
   }
-  
-  .cartitems-format-main p {
-    text-align: left;
-    font-weight: 600;
-  }
+
   
   .cartitems-format {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two column layout for items too */
-    gap: 10px;
-    padding: 10px;
+    gap: 15px;
+    padding: 20px;
     align-items: center;
+    justify-content: center;
+    margin-top: 8vh;
+    margin: 0 auto;
   }
   
-  /* Header labels for mobile view */
-  .cartitems-format-main p:nth-child(1):before { content: "Products: "; }
-  .cartitems-format-main p:nth-child(2):before { content: "Title: "; }
-  .cartitems-format-main p:nth-child(3):before { content: "Price: "; }
-  .cartitems-format-main p:nth-child(4):before { content: "Quantity: "; }
-  .cartitems-format-main p:nth-child(5):before { content: "Total: "; }
-  .cartitems-format-main p:nth-child(6):before { content: "Size: "; }
-  
-  /* Also modify the product display in cart */
   .carticon-product-icon {
     width: 60px;
     height: auto;
@@ -293,12 +335,31 @@ transform: translate(0);
   .cartitems-total, .cartitems-promocode {
     width: 100%;
   }
+  .empty-cart {
+    margin: 40px auto;
+    min-height: 50vh;
+    width: 90%;
+  }
+  
+  .empty-cart-container {
+    padding: 30px 20px;
+    width: 95%;
+  }
+  
+  .empty-cart-container svg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .empty-cart-container h2 {
+    font-size: 24px;
+  }
+  
+  .empty-cart-container p {
+    font-size: 14px;
+  }
 }
-.cart-label-mobile {
-  display: none;
-  font-weight: bold;
-  margin-right: 5px;
-}
+
 
 @media (max-width: 800px) {
   .cartitems-total {
@@ -325,7 +386,9 @@ transform: translate(0);
     gap: 100px; /* Space between items */
   }
   .cart-label-mobile {
-    display: inline-block;
+    display: block;
+    margin: 0 0 5px 0;
+    text-align: center;
   }
   
   /* Hide the header row in mobile view */

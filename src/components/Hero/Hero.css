@@ -148,18 +148,28 @@
     
     .hero{
         margin-left: 20px;
-        flex-direction: column;
-        min-height: 70vh; /* Reduce height for small screens */
+        flex-direction: column-reverse;
+        min-height: 50vh; /* Reduce height for small screens */
         width: 100%; /* Change from 100vw to 100% */
         max-width: 100%; /* Ensure it doesn't exceed screen width */
         margin: 10vh 0 0 0; /* Remove any horizontal margin */
         padding: 0; /* Remove padding */
         /* overflow-x: hidden; Hide horizontal overflow */
         box-sizing: border-box; /* Include padding in width calculation */
+        margin-top: 7.5vh; /* Remove top margin */
     }
     
     .hero-right{
-        display: none;
+        display: flex; /* Show the right section on mobile */
+        width: 100%;
+        justify-content: center;
+        padding-top: 20px;
+        margin-top: 30px; /* Remove top margin */
+    }
+    
+    .hero-right img{
+        width: 250px; /* Make image smaller for mobile */
+        height: auto;
     }
     
     .hero-left{
