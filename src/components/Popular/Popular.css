@@ -53,7 +53,7 @@
 
 @media(max-width:1024px){
   .popular{
-    height: 60vh;
+    height: 40vh;
   }
   .popular h1{
     font-size: 30px;
@@ -87,7 +87,7 @@
 @media(max-width:500px){
   .popular{
     height: 75vh;
-    margin-bottom:0;
+    margin-bottom: 50px;
   }
   .popular-item{
     display: grid;
@@ -95,3 +95,8 @@
     gap: 20px;
   }
 }
+@media(max-width:400px){
+  .popular{
+    height: 85vh;
+    margin-bottom: 50px;
+  }}

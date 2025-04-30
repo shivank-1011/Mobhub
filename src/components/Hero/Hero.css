@@ -96,6 +96,7 @@
 }
 
 @media(max-width:1024px){
+    .hero{margin-top: 5vh;}
     .hero-left{
         padding-left: 80px;
     }
@@ -119,6 +120,8 @@
 }
 
 @media(max-width:800px){
+    .hero{margin-top: 6vh;}
+    
     .hero-left{
         padding-left: 30px;
     }
@@ -152,11 +155,11 @@
         min-height: 50vh; /* Reduce height for small screens */
         width: 100%; /* Change from 100vw to 100% */
         max-width: 100%; /* Ensure it doesn't exceed screen width */
-        margin: 10vh 0 0 0; /* Remove any horizontal margin */
+        margin:0; /* Remove any horizontal margin */
         padding: 0; /* Remove padding */
         /* overflow-x: hidden; Hide horizontal overflow */
         box-sizing: border-box; /* Include padding in width calculation */
-        margin-top: 7.5vh; /* Remove top margin */
+        margin-top: 6vh; /* Remove top margin */
     }
     
     .hero-right{
