@@ -177,6 +177,9 @@
 @media(max-width:800px){
     .footer{
         gap: 20px;
+        padding: 0 10px; /* Add some horizontal padding */
+      width: 100%;
+      box-sizing: border-box;
     }
     .footer-logo{
         gap: 10px;

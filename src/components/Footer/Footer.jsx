@@ -1,12 +1,37 @@
 import React from 'react'
 import './Footer.css'
 import footer_logo from '../Assets/logo.png'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+
   const scrollToNewCollections = () => {
     const element = document.getElementById('new-collections')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToShopCategoryBanner = () => {
+    const element = document.querySelector('.shopcategory-banner')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleProductsClick = () => {
+    const currentPath = location.pathname.toLowerCase()
+    if (currentPath === '/') {
+      // In home section, scroll to new-collections
+      scrollToNewCollections()
+    } else if (currentPath === '/apple' || currentPath === '/samsung' || currentPath === '/vivo') {
+      // In apple, samsung, or vivo section, scroll to shopcategory-banner
+      scrollToShopCategoryBanner()
+    } else {
+      // Navigate to /apple with state to scroll after navigation
+      navigate('/apple', { state: { scrollToBanner: true } })
     }
   }
 
@@ -17,12 +42,12 @@ const Footer = () => {
         <p>MobHub</p>
       </div>
       <ul className='footer-links'>
-        <li style={{ cursor: 'pointer' }} onClick={scrollToNewCollections}>Products</li>
+        <li style={{ cursor: 'pointer' }} onClick={handleProductsClick}>Products</li>
         <li>About</li>
         <li>Contact</li>
       </ul>
       <div className="social-login-icons">
-        <div className="socialcontainer">
+      <div className="socialcontainer">
           <a href="https://www.linkedin.com/in/shivank-gupta-064a83314" target="_blank" rel="noopener noreferrer">
             <div className="icon social-icon-1-1">
               <svg

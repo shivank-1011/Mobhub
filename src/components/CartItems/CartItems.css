@@ -10,7 +10,7 @@
 
 .cartitems-format-main{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   gap: 75px;
   padding: 20px 0px;
@@ -199,7 +199,7 @@ transform: translate(0);
       margin: 60px 50px;
   }
   .cartitems-format-main{
-      grid-template-columns: 0.5fr 3fr 0.5fr 0.5fr 0.5fr 0.5fr;
+      grid-template-columns: repeat(6,1fr);
       gap: 20px;
       padding: 15px 0px;
       font-size: 15px;
@@ -210,10 +210,7 @@ transform: translate(0);
   .cartitems-remove-icon{
       margin: auto;
   }
-  .cartitems-quantity{
-      width: 40px;
-      height: 30px;
-  }
+
   .cartitems-down{
       margin: 80px 0px;
       flex-direction: column;
@@ -240,74 +237,104 @@ transform: translate(0);
   } 
 }
 
-@media(max-width:800px){
-  .cartitems{
-      margin: 40px 20px;
+/* Add this media query at the end of your CartItems.css file */
+
+@media (max-width: 800px) {
+  .cartitems-format-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two column layout */
+    gap: 20px;
+    padding: 10px;
+    margin: 0 auto; /* This centers the grid horizontally */
+    max-width: 90%; /* Control the maximum width */
+    width: fit-content; /* Make the grid only as wide as its content */
+    justify-content: center; /* Center the grid items */
   }
-  .cartitems-format-main{
-      grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
-      gap: 15px;
-      padding: 10px 0px;
-      font-size: 14px;
+  
+  .cartitems-format-main p {
+    text-align: left;
+    font-weight: 600;
   }
-  .carticon-product-icon{
-      height: 40px;
+  
+  .cartitems-format {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two column layout for items too */
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
   }
-  .cartitems-remove-icon{
-      margin: 0 10px;
+  
+  /* Header labels for mobile view */
+  .cartitems-format-main p:nth-child(1):before { content: "Products: "; }
+  .cartitems-format-main p:nth-child(2):before { content: "Title: "; }
+  .cartitems-format-main p:nth-child(3):before { content: "Price: "; }
+  .cartitems-format-main p:nth-child(4):before { content: "Quantity: "; }
+  .cartitems-format-main p:nth-child(5):before { content: "Total: "; }
+  .cartitems-format-main p:nth-child(6):before { content: "Size: "; }
+  
+  /* Also modify the product display in cart */
+  .carticon-product-icon {
+    width: 60px;
+    height: auto;
   }
-  .cartitems-quantity{
-      width: 35px;
-      height: 25px;
+  
+  .cartitems-quantity-control {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    width: fit-content;
   }
-  .cartitems-down{
-      margin: 60px 0px;
-      flex-direction: column;
-      gap: 60px;
+  
+  /* Adjust the totals section */
+  .cartitems-down {
+    flex-direction: column;
   }
-  .cartitems-total button{
-      max-width: 180px;
-      height: 40px;
-      font-size: 14px;
-  }
-  .cartitems-promobox{
-      max-width: 400px;
-      margin-left: 0;
-  }
-  .cartitems-promobox button{
-      width: 100px;
-      margin-left: 0;
+  
+  .cartitems-total, .cartitems-promocode {
+    width: 100%;
   }
 }
+.cart-label-mobile {
+  display: none;
+  font-weight: bold;
+  margin-right: 5px;
+}
 
-@media(max-width:500px){
-  .cartitems-format-main{
-      display: none;
-      grid-template-columns: 0.5fr 3fr 0.5fr;
-      gap: 10px;
+@media (max-width: 800px) {
+  .cartitems-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center child elements horizontally */
+    width: 100%;
+    margin-right: 10px;
   }
-  .cartitems-format{
-      display: grid;
+  
+  .cartitems-total h1 {
+    align-self: center; /* Center the heading */
   }
-  .cartitems{
-      margin: 20px 10px;
+  
+  .cartitems-total button {
+    margin: 0 auto; /* Center the button */
+    display: block; /* Ensure it takes proper margin */
   }
-  .cartitems-down{
-      margin: 40px 0px;
-      gap: 40px;
+  
+  .cartitems-total-item {
+    width: 100%; /* Full width for the items */
+    display: flex;
+    justify-content: space-between;
+    gap: 100px; /* Space between items */
   }
-  .cartitems-total button{
-      max-width: 150px;
-      height: 35px;
-      font-size: 12px;
+  .cart-label-mobile {
+    display: inline-block;
   }
-  .cartitems-promobox{
-      max-width: 300px;
+  
+  /* Hide the header row in mobile view */
+  .cartitems > .cartitems-format-main {
+    display: none;
   }
-  .cartitems-promobox input{
-      width: 100%;
-  }
-  .cartitems-promobox button{
-      width: 80px;
+  
+  /* Hide the first hr */
+  .cartitems > hr:first-of-type {
+    display: none;
   }
 }

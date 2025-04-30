@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../context/ShopContext'
-import remove_icon from '../Assets/cart_cross_icon.png'
 import { Link } from 'react-router-dom'
 
 const CartItems = () => {
@@ -51,33 +50,45 @@ const CartItems = () => {
         <p>Quantity</p>
         <p>Total</p>
         <p>Size</p>
-        <p>Remove</p>
       </div>
       <hr />
-      {cartItems.map((cartItem, index) => {
-        const product = all_product.find(p => p.id === Number(cartItem.itemId))
-        if (!product) return null
-        return (
-          <div key={index}>
-            <div className="cartitems-format cartitems-format-main">
-              <img src={product.image} alt="" className='carticon-product-icon' />
-              <Link to={`/product/${product.id}`} className='cartitem-product-name' style={{ color: 'black', textDecoration: 'none' }}>
-                {product.name}
-              </Link>
-              <p>${cartItem.adjustedPrice}</p>
-              <div className='cartitems-quantity-control'>
-                <button className='quantity-btn minus-btn' onClick={() => removeFromCart(cartItem.itemId, cartItem.size)}>-</button>
-                <span className='cartitems-quantity'>{cartItem.quantity}</span>
-                <button className='quantity-btn plus-btn' onClick={() => addToCart(cartItem.itemId, cartItem.size, priceIncrements[cartItem.size])}>+</button>
-              </div>
-              <p>${cartItem.adjustedPrice * cartItem.quantity}</p>
-              <p>{cartItem.size}</p>
-              <img className='cartitems-remove-icon' src={remove_icon} onClick={() => { removeFromCart(cartItem.itemId, cartItem.size) }} alt="" />
-            </div>
-            <hr />
-          </div>
-        )
-      })}
+
+{cartItems.map((cartItem, index) => {
+  const product = all_product.find(p => p.id === Number(cartItem.itemId))
+  if (!product) return null
+  return (
+    <div key={index}>
+      <div className="cartitems-format cartitems-format-main">
+        <span className="cart-label-mobile">Products:</span>
+        <img src={product.image} alt="" className='carticon-product-icon' />
+        
+        <span className="cart-label-mobile">Title:</span>
+        <Link to={`/product/${product.id}`} className='cartitem-product-name' style={{ color: 'black', textDecoration: 'none' }}>
+          {product.name}
+        </Link>
+        
+        <span className="cart-label-mobile">Price:</span>
+        <p>${cartItem.adjustedPrice}</p>
+        
+        <span className="cart-label-mobile">Quantity:</span>
+        <div className='cartitems-quantity-control'>
+          <button className='quantity-btn minus-btn' onClick={() => removeFromCart(cartItem.itemId, cartItem.size)}>-</button>
+          <span className='cartitems-quantity'>{cartItem.quantity}</span>
+          <button className='quantity-btn plus-btn' onClick={() => addToCart(cartItem.itemId, cartItem.size, priceIncrements[cartItem.size])}>+</button>
+        </div>
+        
+        <span className="cart-label-mobile">Total:</span>
+        <p>${cartItem.adjustedPrice * cartItem.quantity}</p>
+        
+        <span className="cart-label-mobile">Size:</span>
+        <p>{cartItem.size}</p>
+        
+       
+      </div>
+      <hr />
+    </div>
+  )
+})}
       <div className="cartitems-down">
         <div className="cartitems-total">
           <h1>Cart Totals</h1>

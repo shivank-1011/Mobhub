@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './CSS/ShopCategory.css'
 import { ShopContext } from '../context/ShopContext'
 import dropdown_icon from '../components/Assets/dropdown_icon.png'
 import Item from '../components/Item/Item.jsx'
+import { useLocation } from 'react-router-dom'
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext)
   const [sortOption, setSortOption] = useState('Default')
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const location = useLocation()
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen)
@@ -28,6 +30,15 @@ const ShopCategory = (props) => {
   } else if (sortOption === 'Price: high to low') {
     sortedProducts.sort((a, b) => b.new_price - a.new_price)
   } // Default keeps original order
+
+  useEffect(() => {
+    if (location.state && location.state.scrollToBanner) {
+      const element = document.querySelector('.shopcategory-banner')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }, [location.state])
 
   return (
     <div className='shop-category'>
