@@ -46,7 +46,7 @@ const ShopCategory = (props) => {
       <FadeInSection>
       <img className='shopcategory-banner' src={props.banner} alt="" />
       </FadeInSection>
-      <FadeInSection style={{ transitionDelay: '0.2s' }}>
+      <FadeInSection style={{ transitionDelay: '0.2s',position: 'relative',zIndex:1000 }}>
       <div className="shopcategory-indexsort">
         <p><span>Showing 1-12</span>out of 36 products</p>
         <div className="shopcategory-sort" onClick={toggleDropdown} style={{ cursor: 'pointer', position: 'relative' }}>
