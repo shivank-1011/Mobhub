@@ -13,6 +13,7 @@ import LoadingPage from "./components/LoadingPage.jsx";
 import men_banner from "./components/Assets/banner_mens.png";
 import women_banner from "./components/Assets/banner_women.png";
 import kid_banner from "./components/Assets/banner_kids.png";
+import Contact from './pages/Contact';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -54,6 +55,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </BrowserRouter>

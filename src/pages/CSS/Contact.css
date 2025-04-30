@@ -1,0 +1,146 @@
+.contact-container {
+    margin-top: 10vh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+  }
+  
+  .contact-wrapper {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  .close-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    transition: all 0.3s;
+  }
+  
+  .close-icon:hover {
+    background-color: #ff4141;
+    color: white;
+  }
+  .heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #171717;
+  }
+  
+  .heading span {
+    color: #ff4141;
+  }
+  
+  .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  
+  .input-box input {
+    width: 43%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  textarea {
+    width:95%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    width: 200px;
+    height: 50px;
+    outline: none;
+    background: #ff4141;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .btn:hover {
+    background: #d63030;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .input-box input {
+      width: 43%;
+    }
+    
+    .contact-container {
+      padding: 1rem;
+    }
+    
+    .contact-wrapper {
+      padding: 1.5rem;
+    }
+    .textarea {
+      width: 100%;
+    }
+  }
+    @media (max-width: 600px) {
+        .input-box input {
+            width: 100%;
+        }
+        
+        .contact-container {
+            padding: 1rem;
+        }
+        
+        .contact-wrapper {
+            padding: 1.5rem;
+        }
+        .textarea {
+            width: 95%;
+        }
+    }
+    @media (max-width: 480px) {
+        .input-box input {
+        width: 100%;
+        }
+        
+        .contact-container {
+        padding: 0.5rem;
+        }
+        
+        .contact-wrapper {
+        padding: 1rem;
+        }
+        .textarea {
+            width: 9%;
+        }
+    }

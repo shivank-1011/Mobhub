@@ -43,8 +43,8 @@ const Footer = () => {
       </div>
       <ul className='footer-links'>
         <li style={{ cursor: 'pointer' }} onClick={handleProductsClick}>Products</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li style={{ cursor: 'pointer' }} onClick={() => window.open('https://shivank-1011.github.io/Portfolio/', '_blank')}>About</li>
+        <li style={{ cursor: 'pointer' }} onClick={() => navigate('/contact')}>Contact</li>
       </ul>
       <div className="social-login-icons">
       <div className="socialcontainer">

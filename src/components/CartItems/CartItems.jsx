@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../../context/ShopContext'
 import { Link } from 'react-router-dom'
+import FadeInSection from '../FadeInSection/FadeInSectio';
 
 const CartItems = () => {
   const { getTotalCartAmount, cartItems, all_product, removeFromCart, addToCart } = useContext(ShopContext)
@@ -43,6 +44,7 @@ const CartItems = () => {
 
   return (
     <div className='cartitems'>
+      <FadeInSection>
       <div className='cartitems-format-main'>
         <p>Products</p>
         <p>Title</p>
@@ -52,6 +54,7 @@ const CartItems = () => {
         <p>Size</p>
       </div>
       <hr />
+      </FadeInSection>
 
 {cartItems.map((cartItem, index) => {
   const product = all_product.find(p => p.id === Number(cartItem.itemId))
@@ -86,10 +89,13 @@ const CartItems = () => {
        
       </div>
       <hr />
+      
     </div>
+
   )
 })}
       <div className="cartitems-down">
+      <FadeInSection style={{ transitionDelay: '0.2s' }}>
         <div className="cartitems-total">
           <h1>Cart Totals</h1>
           <div>
@@ -115,6 +121,8 @@ const CartItems = () => {
           </div>
           <button>Proceed To Checkout</button>
         </div>
+        </FadeInSection>
+        <FadeInSection style={{ transitionDelay: '0.3s' }}>
         <div className='cartitems-promocode'>
           <p>If you have a promo code, Enter it here</p>
           <div className="cartitems-promobox">
@@ -123,6 +131,7 @@ const CartItems = () => {
           </div>
           {promoError && <p style={{ color: 'red', marginTop: '5px' }}>{promoError}</p>}
         </div>
+        </FadeInSection>
       </div>
     </div>
   )

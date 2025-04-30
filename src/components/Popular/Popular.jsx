@@ -2,28 +2,32 @@ import React, { useEffect, useState } from 'react'
 import "./Popular.css"
 import data_product from '../Assets/data'
 import Item from '../Item/Item'
+import FadeInSection from '../FadeInSection/FadeInSectio';
 
 const Popular = () => {
-
-// const [popularProducts, setPopularProducts] = useState([])
-
-// useEffect(()=>{
-//   fetch('http://localhost:4000/popularinwomen')
-//   .then((response)=response.json())
-//   .then((data)=>setPopularProducts(data))
-// },[])
-
   return (
-    <div className='popular' id="popular-section">
-      <h1>Trending Now</h1>
+    <div className="popular">
+      <FadeInSection>
+        <h1>Trending Now</h1>
+      </FadeInSection>
       <hr />
       <div className="popular-item">
-        {data_product.map((item, i)=>{
-             return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
+        {data_product.map((item, i) => {
+          return (
+            <FadeInSection key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
+              <Item
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                new_price={item.new_price}
+                old_price={item.old_price}
+              />
+            </FadeInSection>
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Popular

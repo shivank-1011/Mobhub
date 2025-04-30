@@ -4,6 +4,7 @@ import { ShopContext } from '../context/ShopContext'
 import dropdown_icon from '../components/Assets/dropdown_icon.png'
 import Item from '../components/Item/Item.jsx'
 import { useLocation } from 'react-router-dom'
+import FadeInSection from '../components/FadeInSection/FadeInSectio';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext)
@@ -42,7 +43,10 @@ const ShopCategory = (props) => {
 
   return (
     <div className='shop-category'>
+      <FadeInSection>
       <img className='shopcategory-banner' src={props.banner} alt="" />
+      </FadeInSection>
+      <FadeInSection style={{ transitionDelay: '0.2s' }}>
       <div className="shopcategory-indexsort">
         <p><span>Showing 1-12</span>out of 36 products</p>
         <div className="shopcategory-sort" onClick={toggleDropdown} style={{ cursor: 'pointer', position: 'relative' }}>
@@ -83,8 +87,10 @@ const ShopCategory = (props) => {
           )}
         </div>
       </div>
+      </FadeInSection>
       <div className="shopcategory-products">
         {sortedProducts.map((item, i) => (
+          <FadeInSection key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
           <Item
             key={i}
             id={item.id}
@@ -93,11 +99,14 @@ const ShopCategory = (props) => {
             new_price={item.new_price}
             old_price={item.old_price}
           />
+          </FadeInSection>
         ))}
       </div>
+      <FadeInSection style={{ transitionDelay: '0.3s' }}>
       <div className="shopcategory-loadmore">
         Explore More
       </div>
+      </FadeInSection>
     </div>
   )
 }
